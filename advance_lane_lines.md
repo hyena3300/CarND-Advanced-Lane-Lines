@@ -919,8 +919,8 @@ def calculate_road_curvature_and_center(image, warped_image, left_fitx, right_fi
     # Result:
     # < 0: Left of center
     # > 0: Right of center
-    image_center = warped_image.shape[1] / 2
-    lane_center = left_fitx[0] + (right_fitx[0] - left_fitx[0])
+    image_center = image.shape[1] / 2
+    lane_center = (right_fitx[719] + left_fitx[719]) / 2
     center_offset = image_center - lane_center
     
     # Convert to meters
@@ -978,7 +978,7 @@ def process_image(image):
 ```python
 def full_test():
     # Read in an image
-    image = mpimg.imread('../test_images/trouble_image_128.jpg')
+    image = mpimg.imread('../test_images/my_test_image_11.jpg')
 
     result = process_image(image)
     plt.imshow(result)
@@ -988,10 +988,6 @@ print("Done")
 ```
 
     Done
-
-
-
-![png](writeup_images/output_56_1.png)
 
 
 ## Test with test images
@@ -1051,6 +1047,9 @@ video_file_output_path = '../output_project_video.mp4'
 # video_file_path = '../test_video_2.mp4'
 # video_file_output_path = '../output_test_video_2.mp4'
 
+# video_file_path = '../challenge_video.mp4'
+# video_file_output_path = '../output_challenge_video.mp4'
+
 video_input1 = VideoFileClip(video_file_path)
 ```
 
@@ -1068,7 +1067,7 @@ print("Done")
     [MoviePy] Writing video ../output_project_video.mp4
 
 
-    100%|█████████▉| 1260/1261 [12:14<00:00,  2.11it/s]
+    100%|█████████▉| 1260/1261 [09:48<00:00,  1.77it/s]
 
     [MoviePy] Done.
 
@@ -1078,8 +1077,8 @@ print("Done")
 
     [MoviePy] >>>> Video ready: ../output_project_video.mp4 
     
-    CPU times: user 55min 51s, sys: 1min 54s, total: 57min 46s
-    Wall time: 12min 14s
+    CPU times: user 49min 30s, sys: 1min 33s, total: 51min 4s
+    Wall time: 9min 49s
     Done
 
 
